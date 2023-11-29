@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Net.Mail;
 
+
 namespace SmtpProg
 {
     internal class Program
@@ -19,9 +20,13 @@ namespace SmtpProg
             //mail 
             var m = new MailMessage(Mailfrom, Mailto);
            //Header
-            m.Subject = "Тест";
+            m.Subject = "TEST";
             // MailText
             m.Body = "HELLO WORLD";
+
+            //медот для отправки файла 
+            m.Attachments.Add(new Attachment("C:/Users/danil/OneDrive/Документы/ComputerScience/SmtpProg/TEST.txt"));
+
             // адрес smtp-сервера и порт, с которого будем отправлять письмо
             SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
             // логин и пароль

@@ -1,0 +1,34 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Net;
+using System.Net.Mail;
+
+namespace SmtpProg
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            //EMAIL from
+            var Mailfrom = new MailAddress("zdanila027@gmail.com", "ME");
+           //EMAIL TO
+            var Mailto = new MailAddress("zdanila027@gmail.com");
+            //mail 
+            var m = new MailMessage(Mailfrom, Mailto);
+           //Header
+            m.Subject = "Тест";
+            // MailText
+            m.Body = "HELLO WORLD";
+            // адрес smtp-сервера и порт, с которого будем отправлять письмо
+            SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
+            // логин и пароль
+            smtp.Credentials = new NetworkCredential("zdanila027@gmail.com", "nosrqyfdodtqyttc");
+            smtp.EnableSsl = true;
+            smtp.Send(m);
+            Console.Read();
+        }
+    }
+}
